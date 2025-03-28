@@ -318,16 +318,16 @@ function initApp() {
     fetchBooks();
 
     // Implement scroll-based pagination
-    // window.addEventListener('scroll', () => {
-    //     // Check if we're near the bottom of the page
-    //     if (window.innerHeight + window.scrollY >= body.offsetHeight - 500) {
-    //         // Only load more if we haven't reached the last page and aren't currently loading
-    //         if (currentPage < totalPages && !document.querySelector('.loader')?.style.display === 'flex') {
-    //             currentPage++;
-    //             fetchBooks(currentPage);
-    //         }
-    //     }
-    // });
+    window.addEventListener('scroll', () => {
+        // Check if we're near the bottom of the page
+        if (window.innerHeight + window.scrollY >= body.offsetHeight - 500) {
+            // Only load more if we haven't reached the last page and aren't currently loading
+            if (currentPage < totalPages && !(document.querySelector('.loader')?.style.display === 'flex')) {
+                currentPage++;
+                fetchBooks(currentPage);
+            }
+        }
+    });
 }
 
 // Theme toggle event listener
